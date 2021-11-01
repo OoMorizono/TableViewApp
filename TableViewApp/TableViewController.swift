@@ -61,7 +61,13 @@ class TableViewController: UITableViewController {
         return cell
     }
     
-
+    //項目の削除機能
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == UITableViewCell.EditingStyle.delete {
+                taskArray.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
+            }
+        }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
